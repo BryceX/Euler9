@@ -1,59 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-//init variables
+
+//initialize my vars
 int a = 0;
 int b = 0;
-int c = 0;
-
-
-int NumberstoCheck = 100;
-
-std::vector<int> triplesCount;
-void FindTriples()
-{
-
-	for (int i = 0; i < NumberstoCheck; i++)//numerator
-	{
-
-
-
-		if (a*a + b*b == c*c)
-		{
-			triplesCount.push_back(a);
-			triplesCount.push_back(b);
-			triplesCount.push_back(c);
-		}
-	}
-
-
-
-
-}
+int size = 1000;
 int main()
 {
-	//set victory conditions
-
-	FindTriples();
-	//for (int i = 0; i < primeCount.size(); i++)
-	//{
-	//	std::cout << primeCount[i] << std::endl;
-	//}
-	for (int i = 0; i <  triplesCount.size(); i++)
+	for (int i = 1; i < size;i++)
 	{
-		a = triplesCount[i];
-		b = triplesCount[i + 1];
-		c = triplesCount[i + 2];
-		std::cout << a << "  " << b << "  " << c << std::endl;
-		if (a*a + b*b == c*c&&a + b + c == 1000)
+		a = i;
+		for (int j = 1; j < size; j++)
 		{
-			std::cout << a << "  " << b << "  " << c << std::endl;
-			goto hell;
+			b = j;
+			if (a + b + sqrt(a*a + b*b) == size&&a<b) //sqrt(a^2+b^2) is basically c, don't need to make another variable here
+			{
+				//only need my if statement here, rather than all over the place before
+				std::cout << a << "  " << b << "  " << sqrt(a*a + b*b) << std::endl;
+				std::cout << (long)(a * b *sqrt(a*a + b*b)) << std::endl; // cast as long otherwise it shows as exponents
+				break;
+			}
 		}
-
 	}
-
-hell:
 	system("PAUSE");
 }
 
